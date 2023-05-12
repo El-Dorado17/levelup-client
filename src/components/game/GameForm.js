@@ -22,12 +22,23 @@ export const GameForm = () => {
 
     useEffect(() => {
         // TODO: Get the game types, then set the state
+        //getGameTypes is a fetch request, .then means it will get the data and
+        // hold it until given further instruction. setGameTypes is..?
+        getGameTypes().then(setGameTypes)
+        //.then((data)=>setGameTypes(data))
     }, [])
 
     const changeGameState = (domEvent) => {
         // TODO: Complete the onChange function
+        const {name, value} = event.target
+        setCurrentGame(
+            {...currentGame,
+                [event.target.name]: value
+            }
+        )
     }
 
+    
     return (
         <form className="gameForm">
             <h2 className="gameForm__title">Register New Game</h2>
