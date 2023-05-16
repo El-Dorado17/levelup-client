@@ -30,13 +30,18 @@ export const GameForm = () => {
 
     const changeGameState = (domEvent) => {
         // TODO: Complete the onChange function
-        const {name, value} = event.target
+        const {name, value} = domEvent.target
         setCurrentGame(
             {...currentGame,
-                [event.target.name]: value
+                [domEvent.target.name]: value
             }
         )
     }
+    /*
+    const copy = {...currentGame}
+        copy.name = domEvent.target.name
+        setCurrentGame(copy)
+    */
 
     
     return (
@@ -47,6 +52,46 @@ export const GameForm = () => {
                     <label htmlFor="title">Title: </label>
                     <input type="text" name="title" required autoFocus className="form-control"
                         value={currentGame.title}
+                        onChange={changeGameState}
+                    />
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="maker">Maker: </label>
+                    <input type="text" name="maker" required autoFocus className="form-control"
+                        value={currentGame.maker}
+                        onChange={changeGameState}
+                    />
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="numberOfPlayers">Number of Players: </label>
+                    <input type="number" name="numberOfPlayers" required autoFocus className="form-control"
+                        value={currentGame.numberOfPlayers}
+                        onChange={changeGameState}
+                    />
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="skillLevel">Skill Level: </label>
+                    <input type="number" name="skillLevel" required autoFocus className="form-control"
+                        value={currentGame.skillLevel}
+                        onChange={changeGameState}
+                    />
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="gameTypeId">Game Type </label>
+                    <input type="text" name="gameTypeId" required autoFocus className="form-control"
+                        value={currentGame.gameTypeId}
                         onChange={changeGameState}
                     />
                 </div>
@@ -69,7 +114,7 @@ export const GameForm = () => {
 
                     // Send POST request to your API
                     createGame(game)
-                        .then(() => navigate("/games"))
+                        .then(() => navigate("/gameform"))
                 }}
                 className="btn btn-primary">Create</button>
         </form>

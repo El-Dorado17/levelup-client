@@ -1,12 +1,18 @@
 import { Link, useNavigate } from "react-router-dom"
 import "./NavBar.css"
+import { GameForm } from "../game/GameForm"
 
 export const NavBar = () => {
     const navigate = useNavigate()
     return (
         <ul className="navbar">
-            <li className="navbar__item">
-                Navigation link
+            <li className="GameForm">
+                <button classname="GameForm"
+                onClick={() => {
+                    navigate('/gameform')
+                }}>
+                    Register A Game
+                </button>
             </li>
             <li className="navbar__item">
                 Navigation link
